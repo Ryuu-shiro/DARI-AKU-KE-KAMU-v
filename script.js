@@ -1,27 +1,31 @@
-onload = () => {
-    const c = setTimeout(() => {
-      document.body.classList.remove("not-loaded");
-      clearTimeout(c);
-    }, 1000);
-  };
-  window.addEventListener("load", () => {
+function mulaiSurprise() {
+  // Hilangkan layar pembuka
+  document.getElementById('intro-screen').style.display = 'none';
+  
+  // Mainkan musik
+  const musik = document.getElementById('musik');
+  musik.play();
+  
+  // Aktifkan semua animasi bunga
+  document.body.classList.remove('not-loaded');
+  
+  // Munculkan foto setelah delay
   setTimeout(() => {
     document.querySelectorAll('.buti-foto').forEach(img => {
       img.classList.add('muncul');
     });
-  }, 4000); // muncul setelah 3 detik (setelah bunga mekar)
-});
-window.addEventListener("load", () => {
+  }, 3000);
+  
+  // Tampilkan marquee setelah 4 detik
   setTimeout(() => {
-    document.querySelectorAll('.buti-foto').forEach(img => {
-      img.classList.add('muncul');
-    });
-  }, 3000); // Ubah timing ini sesuai waktu bunga mekar
-});
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.querySelectorAll('.buti-foto').forEach(img => {
-      img.classList.add('muncul');
-    });
-  }, 3000); // muncul 3 detik setelah load (bunga mekar dulu)
-});
+    const marquee = document.getElementById("marqueeText");
+    if (marquee) {
+      marquee.style.display = "block";
+      
+      // Hilangkan setelah 8 detik (cukup scroll satu kali)
+      setTimeout(() => {
+        marquee.style.display = "none";
+      }, 8000);
+    }
+  }, 4000);
+}
